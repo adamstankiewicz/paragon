@@ -3,6 +3,7 @@ title: 'Card'
 type: 'component'
 components:
 - Card
+- CardHeader
 - CardGrid
 categories:
 - Content
@@ -36,6 +37,74 @@ notes: |
 </Card>
 ```
 
+### CardHeader
+You may add a header by adding a CardHeader component.
+This header displays a title, subtitle, and may contain a series of actions.
+
+```jsx live
+<div>
+  <Card>
+    <CardHeader 
+      title="Title"
+    />
+  </Card>
+  <Card className="mt-1">
+    <CardHeader 
+      title="Title"
+      subtitle="Subtitle"
+    />
+  </Card>
+</div>
+```
+
+### With Actions
+The CardHeader supports custom actions via the the actions prop and renders them on the top right of the header.
+
+```jsx live
+<div>
+  <Card>
+    <CardHeader
+      title="Title"
+      subtitle="Subtitle"
+      actions={
+        <ActionRow>
+          <Button>Action</Button>
+        </ActionRow>
+      } 
+    />
+  </Card>
+  <Card className="mt-1">
+    <CardHeader
+      title="Title"
+      subtitle="Subtitle"
+      actions={
+        <>
+          <ExtraSmall>
+            <IconButton
+              icon={FontAwesome.faBars}
+              alt="Menu"
+              onClick={() => console.log("You clicked the menu button")}
+              variant="primary"
+            />
+          </ExtraSmall>
+          <LargerThanExtraSmall>
+            <ActionRow>
+              <Button>Action 1</Button>
+              <Button variant="secondary">Action 2</Button>
+              <IconButton
+                icon={FontAwesome.faBars}
+                alt="Menu"
+                onClick={() => console.log("You clicked the menu button")}
+                variant="primary"
+              />
+            </ActionRow>
+          </LargerThanExtraSmall>
+        </>
+      } 
+    />
+  </Card>
+</div>
+```
 ### CardGrid
 
 This component displays a collection of Cards as a grid (with customizable responsive behavior), where
